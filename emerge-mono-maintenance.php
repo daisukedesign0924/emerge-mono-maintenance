@@ -3,11 +3,13 @@
  * Plugin Name: Emerge Mono Maintenance
  * Plugin URI: https://github.com/daisukedesign0924/emerge-mono-maintenance
  * Description: サイト改修中に、管理者以外へ軽量な工事中画面と正しい503応答を表示します。
- * Version: 1.0.3
+ * Version: 1.0.4
  * Author: DAISUKE DESIGN
  * Text Domain: emerge-mono-maintenance
  * Requires at least: 6.4
  * Requires PHP: 7.4
+ * License: GPLv2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Update URI: https://github.com/daisukedesign0924/emerge-mono-maintenance
  */
 
@@ -15,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'EMM_VERSION', '1.0.3' );
+define( 'EMM_VERSION', '1.0.4' );
 define( 'EMM_FILE', __FILE__ );
 define( 'EMM_PATH', plugin_dir_path( __FILE__ ) );
 define( 'EMM_OPTION', 'emerge_mono_maintenance_settings' );
@@ -70,7 +72,7 @@ function emm_is_exempt_request() {
 	if ( is_admin() || wp_doing_ajax() || wp_doing_cron() ) {
 		return true;
 	}
-	$request_uri = isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '';
+	$request_uri = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_url( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
 	$path        = (string) wp_parse_url( $request_uri, PHP_URL_PATH );
 	if ( '/robots.txt' === $path || '/favicon.ico' === $path || 0 === strpos( $path, '/wp-login.php' ) ) {
 		return true;

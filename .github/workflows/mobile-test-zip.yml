@@ -1,0 +1,22 @@
+name: Manual test ZIP
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Check PHP syntax
+        run: find . -name '*.php' -not -path './.git/*' -print0 | xargs -0 -n1 php -l
+      - name: Build installable ZIP and checksum
+        run: python3 scripts/package-plugin.py . --output dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wordpress-test-zip
+          path: |
+            dist/*.zip
+            dist/*.sha256
+          if-no-files-found: error
+          retention-days: 14

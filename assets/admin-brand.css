@@ -1,0 +1,11 @@
+.emm-admin-brand img {
+    display: block;
+    width: 190px;
+    height: auto;
+    max-height: 32px;
+    object-fit: contain;
+}
+
+.emm-admin-brand h1 {
+    margin-top: 14px;
+}

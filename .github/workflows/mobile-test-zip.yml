@@ -1,5 +1,6 @@
-name: Manual test ZIP
+name: Test ZIP
 on:
+  pull_request:
   workflow_dispatch:
 permissions:
   contents: read

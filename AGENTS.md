@@ -13,7 +13,7 @@ Preserve unrelated functionality and design. Keep credentials and customer/site 
 
 ## Mobile workflow
 Create a branch for requested fixes. Run relevant checks and generate a ZIP + SHA-256.
-Use the Manual test ZIP workflow to provide downloadable build artifacts without publishing a release.
+Use the Test ZIP workflow to provide downloadable build artifacts without publishing a release.
 Do not create a public release or tag for tests. Alpha/beta versions must stay in a private repository.
 Release workflows publish stable versions only; retain this policy.
 A PHP syntax check does not prove a working WordPress plugin. Test activation, admin editing, saving and rollback on a test site before declaring end-to-end verification complete.

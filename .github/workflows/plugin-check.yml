@@ -26,7 +26,7 @@ jobs:
             --exclude='.github' \
             --exclude='build' \
             --exclude='dist' \
-            --exclude='tests' \
+            --exclude='tests' --exclude='scripts' --exclude='AGENTS.md' --exclude='CLOUD-DEVELOPMENT.md' \
             ./ build/emerge-mono-maintenance/
       - name: Run official WordPress Plugin Check
         uses: wordpress/plugin-check-action@v1

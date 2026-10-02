@@ -1,4 +1,4 @@
-# Emerge Mono Maintenance 1.0.5
+# Emerge Mono Maintenance 1.0.6
 
 Controlled maintenance mode for WordPress.
 

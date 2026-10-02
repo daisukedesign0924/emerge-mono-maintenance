@@ -3,7 +3,7 @@
  * Plugin Name: Emerge Mono Maintenance
  * Plugin URI: https://github.com/daisukedesign0924/emerge-mono-maintenance
  * Description: サイト改修中に、管理者以外へ軽量な工事中画面と正しい503応答を表示します。
- * Version: 1.0.5
+ * Version: 1.0.6
  * Author: DAISUKE DESIGN
  * Text Domain: emerge-mono-maintenance
  * Requires at least: 6.4
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'EMM_VERSION', '1.0.5' );
+define( 'EMM_VERSION', '1.0.6' );
 define( 'EMM_FILE', __FILE__ );
 define( 'EMM_PATH', plugin_dir_path( __FILE__ ) );
 define( 'EMM_OPTION', 'emerge_mono_maintenance_settings' );
@@ -206,6 +206,7 @@ function emm_admin_assets( $hook ) {
 		return;
 	}
 	wp_enqueue_style( 'emm-admin', plugin_dir_url( __FILE__ ) . 'assets/admin.css', array(), EMM_VERSION );
+	wp_enqueue_style( 'emm-admin-brand', plugin_dir_url( __FILE__ ) . 'assets/admin-brand.css', array( 'emm-admin' ), EMM_VERSION );
 }
 add_action( 'admin_enqueue_scripts', 'emm_admin_assets' );
 
@@ -215,7 +216,7 @@ function emm_admin_page() {
 	?>
 	<div class="wrap emm-admin">
 		<header class="emm-admin-head">
-			<div><span>EMERGE MONO / SYSTEM</span><h1>Maintenance</h1></div>
+			<div class="emm-admin-brand"><img src="<?php echo esc_url( plugin_dir_url( __FILE__ ) . 'assets/img/emerge-mono-wordmark-white.webp' ); ?>" alt="Emerge Mono"><h1>Maintenance</h1></div>
 			<div class="emm-status <?php echo $settings['enabled'] ? 'is-live' : ''; ?>"><i></i><?php echo $settings['enabled'] ? 'ACTIVE' : 'OFF'; ?></div>
 		</header>
 
